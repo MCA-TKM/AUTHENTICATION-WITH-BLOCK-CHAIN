@@ -13,4 +13,12 @@
 # limitations under the License.
 
 # Exit on first error, print all commands.
-echo "Not available on this level of fabric."
+set -e
+
+# Grab the current directorydirectory.
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+# Shut down the Docker containers that might be currently running.
+DOCKER_FILE="${DIR}"/composer/docker-compose.yml
+
+docker-compose -f "${DOCKER_FILE}" stop
